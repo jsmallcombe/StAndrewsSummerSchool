@@ -53,9 +53,10 @@ TH1* ExampleSortMod(string input="Run2.root"){
     Esum.DrawCopy();
     
     double Error=0;
-    cout<<endl<<Esum.IntegralAndError(682,692,Error);
-    cout<<endl<<Error;
-    cout<<endl;
+    TAxis *x=Esum.GetXaxis();
+    // Esum is NOT 1 keV/bin
+    double Counts=Esum.IntegralAndError(x->FindBin(341),x->FindBin(346),Error);
+    cout<<endl<<Counts<< " +- "<<Error<<endl;
     
 	//Save output
  	output_file->Write();
