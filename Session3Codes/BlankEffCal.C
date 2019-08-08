@@ -16,7 +16,7 @@ void BlankEffCal(){
 //     cout<<endl<<"Fit Value at x = "<<x<<", y = "<<exfit->Eval(x)<<endl;
 
 // // // Part 3 Confidence Interval
-//     TH1D* hist=new TH1D("err","eer",1000,50,2050);
+//     TH1D* hist=new TH1D("err","eer",2000,0,2000);
 //     (TVirtualFitter::GetFitter())->GetConfidenceIntervals(hist,0.68);
 //     hist->SetFillColor(2);
 //     hist->SetFillStyle(3001);
