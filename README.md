@@ -1,6 +1,11 @@
 # StAndrewsSummerSchool
 StAndrewsSummerSchool Data analysis files
-To download scripts for individual session use the following links
+Download the files in the Test folder and follow the readme to run the test script before coming to the class.
+
+Git can be used to sync this repository.
+
+The scripts for individual session can be downloaded using the following links
+https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/jsmallcombe/StAndrewsSummerSchool/tree/master/Data
 https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/jsmallcombe/StAndrewsSummerSchool/tree/master/Session1Codes
 https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/jsmallcombe/StAndrewsSummerSchool/tree/master/Session2Codes
 https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/jsmallcombe/StAndrewsSummerSchool/tree/master/Session3Codes
