@@ -31,11 +31,11 @@ void Sort4(string input="Run4.root"){
         TH1D Yesum("Yesum","Gamma Singles;Energy [keV];counts/keV",2500,0,2500);
         TH1D Time("Time","Gamma Time Difference;#DeltaT [ns];counts/bin",1000,-1000,1000);
         TH2D yy("yy","GammaGamma;Energy [keV];Energy [keV];counts/2 keV",500,0,2000,500,0,2000);
+        TH2 *back=(TH2*)yy.Clone("back");
+        back->Reset();
 	gROOT->cd();
     
     //Create a background histograms of with identical binning by cloning.
-    TH2 *back=(TH2*)yy.Clone("back");
-    back->Reset();
 
     //Event loop
 	for(int jentry = 0; jentry<nentries; jentry++){
