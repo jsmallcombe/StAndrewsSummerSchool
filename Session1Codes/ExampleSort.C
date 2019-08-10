@@ -15,6 +15,9 @@ void ExampleSort(string input="Run1.root"){
 	output_file->cd();
         TH2D chr("chr","Charge vs Channel;Charge [daq units];Channel;counts/bin",2000,0,2E6,3,0,3);
         TH1D sum("sum","Sum;Charge [daq units];Channel;counts/bin",2000,0,2E6);
+        
+        //ADD NEW HISTOGRAMS HERE
+        // TH1D name("name","Title",BINS,FROM,TOO);
 	gROOT->cd();
 
 	//Loop over all entries in the tree
@@ -27,6 +30,8 @@ void ExampleSort(string input="Run1.root"){
             Hit* hit=Event->GetHit(i);
             sum.Fill(hit->GetCharge());
             chr.Fill(hit->GetCharge(),hit->GetID());
+            
+            //HERE IS WHERE YOU CAN ADD A NEW "FILL" COMMAND FOR NEW HISTOGRAMS
         }
         
         //Progress counter on command line
