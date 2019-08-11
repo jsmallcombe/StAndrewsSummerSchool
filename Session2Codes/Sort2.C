@@ -1,10 +1,11 @@
 #include "Det.h"
 
-TH1* ExampleSortMod(string input="Run2.root"){
+TH1* Sort2(string input="Run2.root"){
     
-    SetCal(0,-0.229526,0.00126409,-6.84542e-13);
-    SetCal(1,-0.0276738,0.00132368,-9.58032e-14);
-    SetCal(2,-0.247034,0.00127735,-4.93374e-13); 
+// // // Part 1 Energy Calibration
+//     SetCal(0,-0.229526,0.00126409,-6.84542e-13);
+//     SetCal(1,-0.0276738,0.00132368,-9.58032e-14);
+//     SetCal(2,-0.247034,0.00127735,-4.93374e-13); 
     
     // Open data file and connect to tree branch
 	TChain* DataChain = new TChain("AnalysisTree","AnalysisTree");
@@ -17,7 +18,6 @@ TH1* ExampleSortMod(string input="Run2.root"){
     while(input.find("/")<=input.size())input=input.substr(input.find("/")+1);
     TFile* output_file = new TFile(("Sorted_"+input).c_str(),"RECREATE");
 	output_file->cd();
-        TH2D chr("chr","Charge vs Channel;Charge [daq units];Channel;counts/bin",2000,0,2E3,3,0,3);
         TH1D Esum("Esum","ESum;Energy [keV];counts/bin",4000,0,2000);
 	gROOT->cd();
 
@@ -30,7 +30,6 @@ TH1* ExampleSortMod(string input="Run2.root"){
 			//Fill Histogramas
             Hit* hit=Event->GetHit(i);
             Esum.Fill(hit->GetEnergy());
-            chr.Fill(hit->GetCharge(),hit->GetID());
         }
         
         //Progress counter on command line
@@ -40,28 +39,32 @@ TH1* ExampleSortMod(string input="Run2.root"){
 	}
 	cout<<"Sorting Complete."<<endl;
     
-    TH1 *Backgnd=TSpectrum::StaticBackground(&Esum,20);
-    Backgnd->SetLineColor(2);
-    Backgnd->SetLineWidth(2);
-    TCanvas *C1=new TCanvas();
-    Esum.DrawCopy();
-    Backgnd->Draw("same");
+// // // Part 2 Calculating a smooth background by using TSpectrum functions
+//     TH1 *Backgnd=TSpectrum::StaticBackground(&Esum,2);
+//      Backgnd->SetLineColor(2);
+//     Backgnd->SetLineWidth(2);
+//     TCanvas *C1=new TCanvas();
+//     Esum.DrawCopy();
+//     Backgnd->Draw("same");
     
-    TCanvas *C2=new TCanvas();
-    Esum.Sumw2();
-    Esum.Add(Backgnd,-1);
-    Esum.DrawCopy();
+// // // Part 3 subtracting the background
+//     TCanvas *C2=new TCanvas();
+// // // // //     Esum.Sumw2();
+//     Esum.Add(Backgnd,-1);
+//     Esum.DrawCopy();
     
-    double Error=0;
-    TAxis *x=Esum.GetXaxis();
-    // Esum is NOT 1 keV/bin
-    double Counts=Esum.IntegralAndError(x->FindBin(341),x->FindBin(346),Error);
-    cout<<endl<<Counts<< " +- "<<Error<<endl;
+// // // Part 4 extracting an integral
+// // // // NOTE : Esum is NOT 1 keV/bin
+//     double Error=0;
+//     TAxis *x=Esum.GetXaxis();
+//     double Counts=Esum.IntegralAndError(x->FindBin(341),x->FindBin(346),Error);
+//     cout<<endl<<Counts<< " +- "<<Error<<endl;
     
 	//Save output
+    TH1* RetHist = (TH1*)Esum.Clone("Eclone");
  	output_file->Write();
     output_file->Close();
 	delete DataChain;
 
-    return (TH1*)Esum.Clone("Eclone");
+    return RetHist;
 }
