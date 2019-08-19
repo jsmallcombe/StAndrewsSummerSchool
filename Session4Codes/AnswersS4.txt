@@ -1,0 +1,7 @@
+A) They are self coincident
+B) True coincidence peak, width due to detector resolution and large false coincidence background due to high rate.
+C) +-20  and 0.846
+D) 70Se
+EQ)They are sum peaks from the most intense cascade, when 2 gamma-rays enter 1 detector.
+E) 29 ns
+

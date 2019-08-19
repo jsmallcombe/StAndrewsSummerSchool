@@ -1,0 +1,12 @@
+
+exp([0]+[1]*log(x)+[2]*pow(log(x),2))
+A) Should turn over and head to zero at zero do to absorbtion and no signal size.
+10375 +- 102 counts at 1332
+B) 0.577 %
+C) 1.2%
+D) ~1.7 %
+E) Kinematic broading due to detector opening angle and doppler shit due relative position.
+gBeta=0.0577059;
+F) 511 keV produced in positron annihilation, which only occurs at ~rest so there is no kinematic shift.
+G) They are self coincident
+H) True coincidence peak, width due to detector resolution and large false coincidence background due to high rate.

@@ -1,0 +1,8 @@
+A)224823 (226176 is the number of hits)
+B)Should look like 60Co spectrum
+C)59000 +- 4000
+D)0 - 3.3298E+11
+E) ~1.2 % at 1200 keV
+F1)Because resolution is proptional to sqrt number of charge carriers, % worse at low energy
+F2)Because only a 2 point calibration was used, so the alighment of the 3 channles is poor away from the calibration points. 
+F3)Signal to noise ratio smaller in electronics
